@@ -56,3 +56,40 @@ export const deleteProduct = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+//lọc sản phẩm
+export const searchProduct = async (req, res) => {
+  try {
+    const { keyword, category, minPrice, maxPrice, sort } = req.query;
+
+    // Xây dựng object filter động
+    let filter = {};
+
+    if (keyword) {
+      filter.name = { $regex: keyword, $options: "i" }; // tìm gần đúng, không phân biệt hoa thường
+    }
+
+    if (category) {
+      filter.category = category;
+    }
+
+    if (minPrice || maxPrice) {
+      filter.price = {};
+      if (minPrice) filter.price.$gte = parseInt(minPrice);
+      if (maxPrice) filter.price.$lte = parseInt(maxPrice);
+    }
+
+    // Query
+    let query = Product.find(filter);
+
+    // Sắp xếp (price: 1 = tăng dần, -1 = giảm dần)
+    if (sort === "asc") query = query.sort({ price: 1 });
+    if (sort === "desc") query = query.sort({ price: -1 });
+
+    const products = await query;
+    res.status(200).json(products);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
