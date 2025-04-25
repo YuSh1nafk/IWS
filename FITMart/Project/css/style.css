@@ -62,7 +62,7 @@ body {
   line-height: 1.5;
   color: #6F6F6F;
   text-align: left;
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -1827,8 +1827,8 @@ pre code {
   color: #495057;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid #EDF1FF;
-  border-radius: 0;
+  border: 1px solid #eaa7a5;
+  border-radius: 10px;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -9096,6 +9096,8 @@ a.text-dark:hover, a.text-dark:focus {
 
 .form-control:focus {
   box-shadow: 0 0 10px;
+  border: 3px dotted var(--pink);
+  padding: 8px;
 }
 .col-lg-4 {
   max-width: 33.333333%; 
