@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Page</title>
+</head>
+<body>
+  <div class="login-container">
+    <div class="image-container"></div>
+    <div class="form-container">
+      <div class="login-form">
+        <h2>Register</h2>
+        <form>
+          <input type="text" placeholder="Username" required>
+          <input type="email" placeholder="Email" required>
+          <input type="password" placeholder="Password" required>
+          <input type="password" placeholder="Confirm Password" required>
+          <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="login.html">Login here</a></p>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    body {
+      background: linear-gradient(to right, #ff69b4, #ff1493);
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .login-container {
+      display: flex;
+      width: 1200px;
+      height: 900px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .image-container {
+      flex: 1;
+      background-image: url('https://kissenglishcenter.com/wp-content/uploads/2022/05/tu%CC%9B%CC%80-vu%CC%9B%CC%A3ng-thu%CC%9Bo%CC%9B%CC%80ng-du%CC%80ng-khi-vie%CC%82%CC%81t-doa%CC%A3n-va%CC%86n-tie%CC%82%CC%81ng-anh-ve%CC%82%CC%80-shopping-1024x1024.jpg');
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .form-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-form {
+      width: 90%;
+      padding: 30px;
+      background-color: white;
+    }
+
+    .login-form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"], input[type="email"], input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    input::placeholder {
+      color: #999;
+      font-size: 14px;
+      font-family: Arial, sans-serif;
+    }
+
+    input:focus {
+      border-color: #800080;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #800080;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #660066;
+    }
+
+    p {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    a {
+      color: #800080;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .login-container {
+        width: 90%;
+        height: auto;
+        margin: 20px auto;
+        flex-direction: column;
+      }
+      .image-container {
+        height: 30vh;
+      }
+      .form-container {
+        padding: 20px;
+      }
+      .login-form {
+        width: 100%;
+      }
+    }
+  </style>
+</body>
+</html>
