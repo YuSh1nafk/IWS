@@ -37,7 +37,7 @@
                     <i class="fas fa-heart text-primary"></i>
                     <span class="badge">0</span>
                 </a>
-                <a href="" class="btn border">
+                <a href="cart.html" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
                     <span class="badge">0</span>
                 </a>
@@ -59,7 +59,7 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="index.html" class="nav-item nav-link">Home</a>
+                            <a href="../index.html" class="nav-item nav-link">Home</a>
                             <a href="shop.html" class="nav-item nav-link">Shop</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
@@ -102,16 +102,19 @@
                                 <i class="fa fa-minus"></i>
                             </button>
                         </div>
-                        <input type="text" class="form-control bg-secondary text-center" value="1">
+                        <input type="text" id="quantity" class="form-control bg-secondary text-center" value="1">
                         <div class="input-group-btn">
                             <button class="btn btn-primary btn-plus">
                                 <i class="fa fa-plus"></i>
                             </button>
                         </div>
                     </div>
-                    <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button>
+                    <button id="add-to-cart" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button>
                     <span class="mx-2"></span>
                     <button class="btn btn-primary px-3"><i class="fas fa-heart mr-1"></i> Add To Favorite</button>
+                </div>
+                <div class="d-flex pt-2 pb-4">
+                    <a href="shop.html" class="btn btn-outline-primary px-3"><i class="fa fa-arrow-left mr-1"></i> Back to Shop</a>
                 </div>
                 <div class="d-flex pt-2">
                     <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>
@@ -221,7 +224,7 @@
                     <div class="col-md-4 mb-5">
                         <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                            <a class="text-dark mb-2" href="../index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
                             <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
 
                             <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
@@ -232,7 +235,7 @@
                     <div class="col-md-4 mb-5">
                         <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                            <a class="text-dark mb-2" href="../index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
                             <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
 
                             <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
@@ -286,69 +289,183 @@
 
     <!-- Dynamic Content Script -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', async function() {
             const urlParams = new URLSearchParams(window.location.search);
-            const productIdParam = urlParams.get('product');
-            const productId = parseInt(productIdParam);
-
-            // Check if productId is a valid number
-            if (isNaN(productId) || !productIdParam) {
-                console.error('Invalid or missing product ID:', productIdParam);
-                document.getElementById('product-name').textContent = 'Invalid product ID. Please use a number between 1 and 16.';
-                document.getElementById('product-description').textContent = 'No product ID was provided in the URL. Please access this page with a valid ID, e.g., detail.html?product=1.';
-                document.getElementById('description-content').textContent = 'No product ID was provided in the URL. Please access this page with a valid ID, e.g., detail.html?product=1.';
+            const productId = urlParams.get('product');
+            // For demo purposes, using a fixed userId (this would come from authentication in a real app)
+            const userId = localStorage.getItem('userId');
+            
+            // Check if productId exists
+            if (!productId) {
+                console.error('Missing product ID');
+                showErrorMessage('No product ID provided', 'Please access this page with a valid product ID, e.g., detail.html?product=123abc.');
                 return;
             }
 
-            // Check if products array is defined
-            if (typeof products === 'undefined') {
-                console.error('Products array is not defined. Ensure product.js is loaded correctly.');
-                document.getElementById('product-name').textContent = 'Products data not loaded';
-                document.getElementById('product-description').textContent = 'The product data could not be loaded. Please check if product.js is correctly included.';
-                document.getElementById('description-content').textContent = 'The product data could not be loaded. Please check if product.js is correctly included.';
-                return;
-            }
+            try {
+                // Fetch product details from API
+                const response = await fetch(`http://localhost:5000/products/${productId}`);
+                
+                if (!response.ok) {
+                    if (response.status === 404) {
+                        throw new Error('Product not found');
+                    } else {
+                        throw new Error('Server error: ' + response.status);
+                    }
+                }
+                
+                const product = await response.json();
 
-            const product = products.find(p => p.id === productId);
-
-            if (product) {
-                document.getElementById('product-image').src = product.image;
+                // Update product details in the DOM
+                document.getElementById('product-image').src = product.image || '../img/placeholder.jpg';
                 document.getElementById('product-image').alt = product.name;
                 document.getElementById('product-name').textContent = product.name;
-                document.getElementById('product-rating').innerHTML = '<small class="fas fa-star"></small>'.repeat(product.rating) +
-                    '<small class="far fa-star"></small>'.repeat(5 - product.rating);
-                document.getElementById('reviews-count').textContent = `(${product.reviews.length} Reviews)`;
+                
+                // Default rating to 5 if not available from API
+                const rating = product.rating || 5;
+                document.getElementById('product-rating').innerHTML = '<small class="fas fa-star"></small>'.repeat(rating) +
+                    '<small class="far fa-star"></small>'.repeat(5 - rating);
+                
+                // Default to 0 reviews if not available
+                const reviewsCount = product.reviews ? product.reviews.length : 0;
+                document.getElementById('reviews-count').textContent = `(${reviewsCount} Reviews)`;
+                
                 document.getElementById('product-price').textContent = `$${product.price.toFixed(2)}`;
                 document.getElementById('product-description').textContent = product.description;
                 document.getElementById('description-content').textContent = product.description;
 
+                // Add product information if available
                 const infoList = document.getElementById('information-list');
-                for (const [key, value] of Object.entries(product.information)) {
-                    infoList.innerHTML += `<li class="list-group-item px-0">${key.charAt(0).toUpperCase() + key.slice(1)}: ${value}</li>`;
+                infoList.innerHTML = ''; // Clear existing content
+                
+                if (product.information) {
+                    for (const [key, value] of Object.entries(product.information)) {
+                        infoList.innerHTML += `<li class="list-group-item px-0">${key.charAt(0).toUpperCase() + key.slice(1)}: ${value}</li>`;
+                    }
+                } else {
+                    // Add some default information based on available product data
+                    infoList.innerHTML += `<li class="list-group-item px-0">Category: ${product.category || 'General'}</li>`;
+                    infoList.innerHTML += `<li class="list-group-item px-0">Stock: ${product.countInStock || 0} units available</li>`;
                 }
 
+                // Update and show reviews if available
                 const reviewsContainer = document.getElementById('reviews-container');
-                product.reviews.forEach(review => {
-                    reviewsContainer.innerHTML += `
-                        <div class="media mb-4">
-                            <img src="../img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
-                            <div class="media-body">
-                                <h6>${review.user}<small> - <i>${review.date}</i></small></h6>
-                                <div class="text-primary mb-2">
-                                    ${'<i class="fas fa-star"></i>'.repeat(review.rating)}
-                                    ${'<i class="far fa-star"></i>'.repeat(5 - review.rating)}
+                reviewsContainer.innerHTML = ''; // Clear existing content
+                
+                if (product.reviews && product.reviews.length > 0) {
+                    product.reviews.forEach(review => {
+                        reviewsContainer.innerHTML += `
+                            <div class="media mb-4">
+                                <img src="../img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                                <div class="media-body">
+                                    <h6>${review.user}<small> - <i>${review.date}</i></small></h6>
+                                    <div class="text-primary mb-2">
+                                        ${'<i class="fas fa-star"></i>'.repeat(review.rating)}
+                                        ${'<i class="far fa-star"></i>'.repeat(5 - review.rating)}
+                                    </div>
+                                    <p>${review.comment}</p>
                                 </div>
-                                <p>${review.comment}</p>
                             </div>
-                        </div>
-                    `;
-                });
-            } else {
-                console.error(`Product with ID ${productId} not found. Available IDs: ${products.map(p => p.id).join(', ')}`);
-                document.getElementById('product-name').textContent = 'Product not found';
-                document.getElementById('product-description').textContent = `No product matches ID ${productId}. Please use a valid product ID between 1 and 16.`;
-                document.getElementById('description-content').textContent = `No product matches ID ${productId}. Please use a valid product ID between 1 and 16.`;
+                        `;
+                    });
+                } else {
+                    reviewsContainer.innerHTML = '<p>No reviews yet. Be the first to leave a review!</p>';
+                }
+                
+                // Add event listeners for cart functionality
+                setupCartFunctionality(productId, userId);
+                
+            } catch (error) {
+                console.error('Error fetching product details:', error);
+                showErrorMessage('Error loading product', error.message || 'There was an error loading the product details. Please try again later.');
             }
+
+            // Helper function to display error messages
+            function showErrorMessage(title, message) {
+                document.getElementById('product-name').textContent = title;
+                document.getElementById('product-description').textContent = message;
+                document.getElementById('description-content').textContent = message;
+                // Hide rating and price sections when showing error
+                document.getElementById('product-rating').innerHTML = '';
+                document.getElementById('product-price').textContent = '';
+            }
+            
+            // Setup cart functionality
+            function setupCartFunctionality(productId, userId) {
+                // Get quantity input and add to cart button
+                const quantityInput = document.getElementById('quantity');
+                const addToCartBtn = document.getElementById('add-to-cart');
+                
+                // Add event handlers for quantity buttons
+                document.querySelector('.btn-minus').addEventListener('click', function() {
+                    let value = parseInt(quantityInput.value);
+                    if (value > 1) {
+                        quantityInput.value = value - 1;
+                    }
+                });
+                
+                document.querySelector('.btn-plus').addEventListener('click', function() {
+                    let value = parseInt(quantityInput.value);
+                    quantityInput.value = value + 1;
+                });
+                
+                // Add to cart button click handler
+                addToCartBtn.addEventListener('click', function() {
+                    addToCart(productId, parseInt(quantityInput.value));
+                });
+            }
+            
+            // Function to add product to cart
+            function addToCart(productId, quantity) {
+                fetch('http://localhost:5000/cart/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        userId: userId,
+                        productId: productId,
+                        quantity: quantity
+                    }),
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    alert('Product added to cart successfully!');
+                    updateCartCount(userId);
+                })
+                .catch(error => {
+                    console.error('Error adding to cart:', error);
+                    alert('Failed to add product to cart. Please try again.');
+                });
+            }
+            
+            // Function to update cart count in header
+            function updateCartCount(userId) {
+                fetch(`http://localhost:5000/cart/${userId}`)
+                    .then(response => response.json())
+                    .then(cart => {
+                        let itemCount = 0;
+                        if (cart && cart.items) {
+                            itemCount = cart.items.reduce((total, item) => total + item.quantity, 0);
+                        }
+                        // Update all cart badges
+                        document.querySelectorAll('.fa-shopping-cart').forEach(icon => {
+                            const badge = icon.nextElementSibling;
+                            if (badge && badge.classList.contains('badge')) {
+                                badge.textContent = itemCount;
+                            }
+                        });
+                    })
+                    .catch(error => console.error('Error updating cart count:', error));
+            }
+            
+            // Initialize cart count
+            updateCartCount(userId);
         });
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9354b0fc392253e7',t:'MTc0NTQ4ODE3My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>

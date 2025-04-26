@@ -1,12 +1,11 @@
 {
-  
   "name": "Server",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-  "start": "nodemon index.js"
-},
+    "start": "nodemon index.js"
+  },
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
