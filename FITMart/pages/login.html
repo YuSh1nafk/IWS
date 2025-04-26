@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>FITMart - Register</title>
+    <title>FITMart - Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
     <!-- Favicon -->
@@ -46,10 +46,6 @@
             </div>
             <div class="col-lg-3 col-6 text-right">
                 <a href="" class="btn border">
-                    <i class="fas fa-heart text-primary"></i>
-                    <span class="badge">0</span>
-                </a>
-                <a href="" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
                     <span class="badge">0</span>
                 </a>
@@ -80,8 +76,8 @@
                             <a href="contact.html" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
-                            <a href="login.html" class="nav-item nav-link">Login</a>
-                            <a href="register.html" class="nav-item nav-link active">Register</a>
+                            <a href="login.html" class="nav-item nav-link active">Login</a>
+                            <a href="register.html" class="nav-item nav-link">Register</a>
                         </div>
                     </div>
                 </nav>
@@ -90,18 +86,14 @@
     </div>
     <!-- Navbar End -->
 
-    <!-- Register Start -->
+    <!-- Login Start -->
     <div class="container-fluid pt-5">
         <div class="row px-xl-5 d-flex justify-content-center">
             <div class="col-lg-6 mb-5">
                 <div class="contact-form">
                     <div class="p-4 border mb-4">
-                        <h4 class="mb-4 text-center font-weight-semi-bold">Create an Account</h4>
-                        <form id="registerForm">
-                            <div class="control-group mb-3">
-                                <input type="text" class="form-control" id="username" placeholder="Username" required/>
-                                <p class="help-block text-danger"></p>
-                            </div>
+                        <h4 class="mb-4 text-center font-weight-semi-bold">Login to Your Account</h4>
+                        <form id="loginForm">
                             <div class="control-group mb-3">
                                 <input type="email" class="form-control" id="email" placeholder="Email" required/>
                                 <p class="help-block text-danger"></p>
@@ -110,16 +102,12 @@
                                 <input type="password" class="form-control" id="password" placeholder="Password" required/>
                                 <p class="help-block text-danger"></p>
                             </div>
-                            <div class="control-group mb-3">
-                                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" required/>
-                                <p class="help-block text-danger"></p>
-                            </div>
                             <div class="text-center mb-2">
-                                <button class="btn btn-primary py-2 px-4" type="submit" id="registerButton">Register</button>
+                                <button class="btn btn-primary py-2 px-4" type="submit" id="loginButton">Login</button>
                             </div>
                             <div id="alertMessage" class="alert d-none mt-3"></div>
                             <div class="text-center">
-                                <p>Already have an account? <a href="login.html">Login here</a></p>
+                                <p>Don't have an account? <a href="register.html">Register here</a></p>
                             </div>
                         </form>
                     </div>
@@ -127,7 +115,7 @@
             </div>
         </div>
     </div>
-    <!-- Register End -->
+    <!-- Login End -->
 
     <!-- Footer Start (shortened for brevity) -->
     <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
@@ -153,47 +141,43 @@
     <script src="../lib/easing/easing.min.js"></script>
     <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
 
-    <!-- Register JavaScript -->
+    <!-- Login JavaScript -->
     <script>
-        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            const username = document.getElementById('username').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
             const alertMessage = document.getElementById('alertMessage');
             
-            // Validate passwords match
-            if (password !== confirmPassword) {
-                alertMessage.textContent = 'Passwords do not match';
-                alertMessage.classList.remove('d-none', 'alert-success');
-                alertMessage.classList.add('alert-danger');
-                return;
-            }
-            
             try {
-                const response = await fetch('http://localhost:5000/auth/register', {
+                const response = await fetch('http://localhost:5000/auth/login', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ username, email, password })
+                    body: JSON.stringify({ email, password })
                 });
                 
                 const data = await response.json();
                 
                 if (response.ok) {
-                    alertMessage.textContent = 'Registration successful! Redirecting to login...';
+                    // Save user data to localStorage
+                    localStorage.setItem('userId', data.user.id);
+                    localStorage.setItem('username', data.user.username);
+                    localStorage.setItem('email', data.user.email);
+                    localStorage.setItem('isLoggedIn', 'true');
+                    
+                    alertMessage.textContent = 'Login successful! Redirecting...';
                     alertMessage.classList.remove('d-none', 'alert-danger');
                     alertMessage.classList.add('alert-success');
                     
-                    // Redirect to login page after successful registration
+                    // Redirect to home page after successful login
                     setTimeout(() => {
-                        window.location.href = 'login.html';
-                    }, 2000);
+                        window.location.href = '../index.html';
+                    }, 1500);
                 } else {
-                    alertMessage.textContent = data.message || 'Registration failed';
+                    alertMessage.textContent = data.message || 'Login failed';
                     alertMessage.classList.remove('d-none', 'alert-success');
                     alertMessage.classList.add('alert-danger');
                 }
@@ -202,6 +186,14 @@
                 alertMessage.classList.remove('d-none', 'alert-success');
                 alertMessage.classList.add('alert-danger');
                 console.error('Error:', error);
+            }
+        });
+        
+        // Check if user is already logged in
+        document.addEventListener('DOMContentLoaded', function() {
+            if (localStorage.getItem('isLoggedIn') === 'true') {
+                // Redirect to home or dashboard
+                // window.location.href = '../index.html';
             }
         });
     </script>
