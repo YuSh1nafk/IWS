@@ -55,7 +55,7 @@
                     <i class="fas fa-heart text-primary"></i>
                     <span class="badge">0</span>
                 </a>
-                <a href="" class="btn border">
+                <a href="cart.html" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
                     <span class="badge">0</span>
                 </a>
@@ -94,7 +94,7 @@
                 <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="index.html" class="nav-item nav-link">Home</a>
+                            <a href="../index.html" class="nav-item nav-link">Home</a>
                             <a href="shop.html" class="nav-item nav-link active">Shop</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
@@ -341,7 +341,7 @@
                     <div class="col-md-4 mb-5">
                         <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                            <a class="text-dark mb-2" href="../index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
                             <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
 
                             <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
@@ -352,7 +352,7 @@
                     <div class="col-md-4 mb-5">
                         <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                            <a class="text-dark mb-2" href="../index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
                             <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
 
                             <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
@@ -402,70 +402,155 @@
     <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="../mail/jqBootstrapValidation.min.js"></script>
     <script src="../mail/contact.js"></script>
-    <script src="../js/product.js"></script>
     <script src="../js/main.js"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', async function () {
             const productsPerPage = 9;
-            const totalProducts = products.length; // Assuming products array from product.js
-            const totalPages = Math.ceil(totalProducts / productsPerPage);
             const productContainer = document.getElementById('product-container');
             const urlParams = new URLSearchParams(window.location.search);
             const currentPage = parseInt(urlParams.get('page')) || 1;
-
-            if (currentPage < 1 || currentPage > totalPages) {
-                productContainer.innerHTML = '<p>Invalid page number.</p>';
-                return;
-            }
-
-            const startIndex = (currentPage - 1) * productsPerPage;
-            const endIndex = Math.min(startIndex + productsPerPage, totalProducts);
-            const currentProducts = products.slice(startIndex, endIndex);
-
-            currentProducts.forEach(product => {
-                const productCard = `
-                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
-                        <div class="card product-item border-0 mb-4">
-                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                                <img class="img-fluid w-100" src="../img/product-${product.id}.jpg" alt="${product.name}" onerror="this.onerror=null; this.src='../img/placeholder.jpg';">
-                            </div>
-                            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                <h6 class="text-truncate mb-3">${product.name}</h6>
-                                <div class="d-flex justify-content-center">
-                                    <h6>$${product.price.toFixed(2)}</h6>
-                                    ${product.originalPrice ? `<h6 class="text-muted ml-2"><del>$${product.originalPrice.toFixed(2)}</del></h6>` : ''}
+            
+            try {
+                // Fetch products from API
+                const response = await fetch('http://localhost:5000/products');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch products');
+                }
+                
+                const products = await response.json();
+                const totalProducts = products.length;
+                const totalPages = Math.ceil(totalProducts / productsPerPage);
+                
+                if (currentPage < 1 || currentPage > totalPages) {
+                    productContainer.innerHTML = '<p>Invalid page number.</p>';
+                    return;
+                }
+                
+                const startIndex = (currentPage - 1) * productsPerPage;
+                const endIndex = Math.min(startIndex + productsPerPage, totalProducts);
+                const currentProducts = products.slice(startIndex, endIndex);
+                
+                // Clear existing content
+                productContainer.innerHTML = '';
+                
+                // Display products
+                currentProducts.forEach(product => {
+                    const productCard = `
+                        <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                            <div class="card product-item border-0 mb-4">
+                                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                    <a href="/pages/detail?product=${product._id}">
+                                        <img class="img-fluid w-100" src="${product.image || '../img/placeholder.jpg'}" alt="${product.name}" onerror="this.onerror=null; this.src='../img/placeholder.jpg';">
+                                    </a>
+                                </div>
+                                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                    <a href="/pages/detail?product=${product._id}" class="text-decoration-none text-dark">
+                                        <h6 class="text-truncate mb-3">${product.name}</h6>
+                                    </a>
+                                    <div class="d-flex justify-content-center">
+                                        <h6>$${product.price.toFixed(2)}</h6>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between bg-light border">
+                                    <a href="/pages/detail?product=${product._id}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                    <a href="javascript:void(0)" onclick="addToCart('${product._id}', 1)" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                                 </div>
                             </div>
-                            <div class="card-footer d-flex justify-content-between bg-light border">
-                                <a href="detail.html?product=${product.id}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                                <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                            </div>
+                        </div>
+                    `;
+                    productContainer.innerHTML += productCard;
+                });
+                
+                // Update pagination
+                const pagination = document.querySelector('.pagination');
+                pagination.innerHTML = '';
+                
+                const prevPage = document.createElement('li');
+                prevPage.className = 'page-item' + (currentPage === 1 ? ' disabled' : '');
+                prevPage.innerHTML = `<a class="page-link" href="shop.html?page=${currentPage - 1}" aria-label="Previous"><span aria-hidden="true">«</span><span class="sr-only">Previous</span></a>`;
+                pagination.appendChild(prevPage);
+                
+                for (let i = 1; i <= totalPages; i++) {
+                    const pageItem = document.createElement('li');
+                    pageItem.className = 'page-item' + (i === currentPage ? ' active' : '');
+                    pageItem.innerHTML = `<a class="page-link" href="shop.html?page=${i}">${i}</a>`;
+                    pagination.appendChild(pageItem);
+                }
+                
+                const nextPage = document.createElement('li');
+                nextPage.className = 'page-item' + (currentPage === totalPages ? ' disabled' : '');
+                nextPage.innerHTML = `<a class="page-link" href="shop.html?page=${currentPage + 1}" aria-label="Next"><span aria-hidden="true">»</span><span class="sr-only">Next</span></a>`;
+                pagination.appendChild(nextPage);
+                
+            } catch (error) {
+                console.error('Error fetching products:', error);
+                productContainer.innerHTML = `
+                    <div class="col-12">
+                        <div class="alert alert-danger">
+                            Failed to load products. Please try again later.
                         </div>
                     </div>
                 `;
-                productContainer.innerHTML += productCard;
-            });
-
-            const pagination = document.querySelector('.pagination');
-            pagination.innerHTML = '';
-
-            const prevPage = document.createElement('li');
-            prevPage.className = 'page-item' + (currentPage === 1 ? ' disabled' : '');
-            prevPage.innerHTML = `<a class="page-link" href="shop.html?page=${currentPage - 1}" aria-label="Previous"><span aria-hidden="true">«</span><span class="sr-only">Previous</span></a>`;
-            pagination.appendChild(prevPage);
-
-            for (let i = 1; i <= totalPages; i++) {
-                const pageItem = document.createElement('li');
-                pageItem.className = 'page-item' + (i === currentPage ? ' active' : '');
-                pageItem.innerHTML = `<a class="page-link" href="shop.html?page=${i}">${i}</a>`;
-                pagination.appendChild(pageItem);
             }
+        });
 
-            const nextPage = document.createElement('li');
-            nextPage.className = 'page-item' + (currentPage === totalPages ? ' disabled' : '');
-            nextPage.innerHTML = `<a class="page-link" href="shop.html?page=${currentPage + 1}" aria-label="Next"><span aria-hidden="true">»</span><span class="sr-only">Next</span></a>`;
-            pagination.appendChild(nextPage);
+        function addToCart(productId, quantity) {
+            // For demo purposes, using a fixed userId (this would come from authentication in a real app)
+            const userId = localStorage.getItem('userId');
+            
+            fetch(`http://localhost:5000/cart`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    userId: userId,
+                    productId: productId,
+                    quantity: quantity
+                }),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                alert('Product added to cart successfully!');
+                // Update cart count in the header if needed
+                updateCartCount(userId);
+            })
+            .catch(error => {
+                console.error('Error adding to cart:', error);
+                alert('Failed to add product to cart. Please try again.');
+            });
+        }
+
+        // Function to update cart count in header
+        function updateCartCount(userId) {
+            fetch(`http://localhost:5000/cart/${userId}`)
+                .then(response => response.json())
+                .then(cart => {
+                    let itemCount = 0;
+                    if (cart && cart.items) {
+                        itemCount = cart.items.reduce((total, item) => total + item.quantity, 0);
+                    }
+                    // Update all cart badges
+                    document.querySelectorAll('.fa-shopping-cart').forEach(icon => {
+                        const badge = icon.nextElementSibling;
+                        if (badge && badge.classList.contains('badge')) {
+                            badge.textContent = itemCount;
+                        }
+                    });
+                })
+                .catch(error => console.error('Error updating cart count:', error));
+        }
+
+        // Initialize cart count when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const userId = localStorage.getItem('userId');
+            updateCartCount(userId);
         });
     </script>
 </body>
