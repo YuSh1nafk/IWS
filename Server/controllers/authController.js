@@ -9,7 +9,9 @@ export const register = async (req, res) => {
 
     // Check trùng email
     const existingUser = await User.findOne({ email });
-    if (existingUser) return res.status(400).json({ message: "Email already exists" });
+    if (existingUser) {
+      return res.status(400).json({ message: "Email already exists" });
+    }
 
     // Hash mật khẩu
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -29,18 +31,23 @@ export const login = async (req, res) => {
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
-    if (!user) return res.status(404).json({ message: "User not found" });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(401).json({ message: "Wrong password" });
+    if (!isMatch) {
+      return res.status(401).json({ message: "Wrong password" });
+    }
 
+    // ⚡ Sửa trả về trực tiếp, không gói trong `user: {}` nữa
     res.status(200).json({
       message: "Login successful",
-      user: {
-        id: user._id,
-        username: user.username,
-        email: user.email
-      }
+      userId: user._id,
+      username: user.username,
+      email: user.email,
+      createdAt: user.createdAt,
+      isAdmin: user.isAdmin
     });
   } catch (err) {
     res.status(500).json({ message: err.message });

@@ -1,12 +1,25 @@
 // server/controllers/productController.js
 import Product from "../models/product.js";
 
-// Tạo sản phẩm mới
 export const createProduct = async (req, res) => {
   try {
-    const newProduct = new Product(req.body);
-    const saved = await newProduct.save();
-    res.status(201).json(saved);
+    const { name, description, price, originalPrice, material, care, fit, image, userId } = req.body;
+
+    const newProduct = new Product({
+      name,
+      description,
+      price,
+      originalPrice,
+      material,
+      care,
+      fit,
+      image,
+      userId
+    });
+
+    await newProduct.save();
+    res.status(201).json(newProduct);
+
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

@@ -1,11 +1,12 @@
 // server/routes/cartRoutes.js
 import express from "express";
-import { addToCart, getCartByUser, removeFromCart } from "../controllers/cartController.js";
+import { addToCart, getUserCart, deleteFromCart, clearCart } from "../controllers/cartController.js";
 
 const router = express.Router();
 
 router.post("/", addToCart);
-router.get("/:userId", getCartByUser);
-router.delete("/:userId/:productId", removeFromCart);
+router.get("/:userId", getUserCart);
+router.delete("/:userId/items/:productId", deleteFromCart);
+router.delete("/:userId", clearCart);
 
 export default router;
