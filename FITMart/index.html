@@ -5,29 +5,24 @@
     <meta charset="utf-8">
     <title>FITMart</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
     <!-- Favicon (local file) -->
     <link rel="icon" href="./img/favicon.ico">
-  
+
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link 
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" 
-      rel="stylesheet"
-    >
-  
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
     <!-- Font Awesome -->
-    <link 
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" 
-      rel="stylesheet"
-    >
-  
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
     <!-- Libraries Stylesheet (local file) -->
     <link href="./lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-  
+
     <!-- Your compiled CSS (local file) -->
     <link href="./css/style.css" rel="stylesheet">
-  </head>
+</head>
 
 <body>
     <!-- Topbar Start -->
@@ -35,7 +30,8 @@
         <div class="row align-items-center py-3 px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
                 <a href="" class="text-decoration-none">
-                    <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">FITMart</span></h1>
+                    <h1 class="m-0 display-5 font-weight-semi-bold"><span
+                            class="text-primary font-weight-bold border px-3 mr-1">FITMart</span></h1>
                 </a>
             </div>
             <div class="col-lg-6 col-6 text-left">
@@ -51,9 +47,8 @@
                 </form>
             </div>
             <div class="col-lg-3 col-6 text-right">
-                <a href="" class="btn border">
+                <a href="./pages/cart.html" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
-                    <span class="badge">0</span>
                 </a>
             </div>
         </div>
@@ -72,15 +67,7 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
                             <a href="../index.html" class="nav-item nav-link active">Home</a>
-                            <a href="./pages/shop.html" class="nav-item nav-link">Shop</a>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                                <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="./pagescart.html" class="dropdown-item">Shopping Cart</a>
-                                    <a href="./pages/checkout.html" class="dropdown-item">Checkout</a>
-                                </div>
-                            </div>
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
+                            <a href="./pages/addProduct.html" class="nav-item nav-link">Upload Product</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
                             <a href="./pages/login.html" class="nav-item nav-link" id="loginLink">Login</a>
@@ -88,6 +75,7 @@
                             <a href="#" class="nav-item nav-link d-none" id="userGreeting"></a>
                             <a href="#" class="nav-item nav-link d-none" id="logoutLink">Logout</a>
                         </div>
+
                     </div>
                 </nav>
             </div>
@@ -101,9 +89,9 @@
                             <img class="img-fluid w-100" src="./img/carousel-1.jpg" alt="Image">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
-                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4>
+                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First
+                                        Order</h4>
                                     <h3 class="display-4 text-white font-weight-semi-bold mb-4">Fashionable Dress</h3>
-                                    <a href="./pages/shop.html" class="btn btn-light py-2 px-3">Shop Now</a>
                                 </div>
                             </div>
                         </div>
@@ -111,9 +99,9 @@
                             <img class="img-fluid w-100" src="./img/carousel-2.jpg" alt="Image">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
-                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First Order</h4>
+                                    <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First
+                                        Order</h4>
                                     <h3 class="display-4 text-white font-weight-semi-bold mb-4">Reasonable Price</h3>
-                                    <a href="./pages/shop.html" class="btn btn-light py-2 px-3">Shop Now</a>
                                 </div>
                             </div>
                         </div>
@@ -164,62 +152,6 @@
         </div>
     </div>
     <!-- Featured End -->
-
-<!-- Categories Start -->
-<div class="container-fluid pt-5">
-    <div class="row px-xl-5 pb-3">
-        <div class="col-lg-4 col-md-6 pb-1">
-            <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                <a href="javascript:void(0)" class="cat-img position-relative overflow-hidden mb-3">
-                    <img class="img-fluid" src="./img/cat-1.jpg" alt="">
-                </a>
-                <h5 class="font-weight-semi-bold m-0">Men's dresses</h5>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 pb-1">
-            <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                <a href="javascript:void(0)" class="cat-img position-relative overflow-hidden mb-3">
-                    <img class="img-fluid" src="./img/cat-2.jpg" alt="">
-                </a>
-                <h5 class="font-weight-semi-bold m-0">Women's dresses</h5>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 pb-1">
-            <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                <a href="javascript:void(0)" class="cat-img position-relative overflow-hidden mb-3">
-                    <img class="img-fluid" src="./img/cat-3.jpg" alt="">
-                </a>
-                <h5 class="font-weight-semi-bold m-0">Baby's dresses</h5>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 pb-1">
-            <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                <a href="javascript:void(0)" class="cat-img position-relative overflow-hidden mb-3">
-                    <img class="img-fluid" src="./img/cat-4.jpg" alt="">
-                </a>
-                <h5 class="font-weight-semi-bold m-0">Accerssories</h5>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 pb-1">
-            <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                <a href="javascript:void(0)" class="cat-img position-relative overflow-hidden mb-3">
-                    <img class="img-fluid" src="./img/cat-5.jpg" alt="">
-                </a>
-                <h5 class="font-weight-semi-bold m-0">Bags</h5>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 pb-1">
-            <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                <a href="javascript:void(0)" class="cat-img position-relative overflow-hidden mb-3">
-                    <img class="img-fluid" src="./img/cat-6.jpg" alt="">
-                </a>
-                <h5 class="font-weight-semi-bold m-0">Shoes</h5>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Categories End -->
-
     <!-- Offer Start -->
     <div class="container-fluid offer pt-5">
         <div class="row px-xl-5">
@@ -245,298 +177,21 @@
     </div>
     <!-- Offer End -->
 
-    <!-- Products Start -->
-    <div class="container-fluid pt-5">
-        <div class="text-center mb-4">
-            <h2 class="section-title px-5"><span class="px-2">Trendy Products</span></h2>
-        </div>
-        <div class="row px-xl-5 pb-3">
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="card product-item border-0 mb-4">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="./img/product-1.jpg" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Spring Long Dress Dior</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>$453.00</h6><h6 class="text-muted ml-2"><del>$999.00</del></h6>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="detail.html?product=1" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="cart.html" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="card product-item border-0 mb-4">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="./img/product-2.jpg" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">LeVi's Jean Shirt</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>$653.00</h6><h6 class="text-muted ml-2"><del>$733.00</del></h6>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="detail.html?product=2" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="card product-item border-0 mb-4">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="./img/product-3.jpg" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Mamba Horse Jacket</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>$223.00</h6><h6 class="text-muted ml-2"><del>$668.00</del></h6>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="detail.html?product=3" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="card product-item border-0 mb-4">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="./img/product-4.jpg" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Short dress Markesta</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>$333.00</h6><h6 class="text-muted ml-2"><del>$885.00</del></h6>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="detail.html?product=4" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="card product-item border-0 mb-4">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="./img/product-5.jpg" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">M&M Stylish Shirt</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>$563.00</h6><h6 class="text-muted ml-2"><del>$999.00</del></h6>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="detail.html?product=5" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="card product-item border-0 mb-4">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="./img/product-6.jpg" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Luna Vest Suite</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>$999.00</h6><h6 class="text-muted ml-2"><del>$1500.00</del></h6>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="detail.html?product=6" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="card product-item border-0 mb-4">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="./img/product-7.jpg" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Lucas Mangto</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>$889.00</h6><h6 class="text-muted ml-2"><del>$1700.00</del></h6>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="detail.html?product=7" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="card product-item border-0 mb-4">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="./img/product-8.jpg" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Baby Shirt</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$200.00</del></h6>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="detail.html?product=8" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Products End -->
 
 
-    <!-- Products Start -->
+    <!-- Product Start -->
     <div class="container-fluid pt-5">
         <div class="text-center mb-4">
             <h2 class="section-title px-5"><span class="px-2">Just Arrived</span></h2>
         </div>
-        <div class="row px-xl-5 pb-3">
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="card product-item border-0 mb-4">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="./img/product-9.jpg" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Floral Summer Dress</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>$199.00</h6><h6 class="text-muted ml-2"><del>$229.00</del></h6>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="detail.html?product=9" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="card product-item border-0 mb-4">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="./img/product-10.jpg" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Clara Black Dress</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>$443.00</h6><h6 class="text-muted ml-2"><del>$783.00</del></h6>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="detail.html?product=10" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="card product-item border-0 mb-4">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="./img/product-11.jpg" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Clara Snow White</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>$888.00</h6><h6 class="text-muted ml-2"><del>$999.00</del></h6>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="detail.html?product=11" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="card product-item border-0 mb-4">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="./img/product-12.jpg" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Clara White Dress</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>$333.00</h6><h6 class="text-muted ml-2"><del>$456.00</del></h6>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="detail.html?product=12" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="card product-item border-0 mb-4">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="./img/product-13.jpg" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Ivory Whisper Dress</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>$453.00</h6><h6 class="text-muted ml-2"><del>$553.00</del></h6>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="detail.html?product=13" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="card product-item border-0 mb-4">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="./img/product-14.jpg" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Clara Belle Dress</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>$445.00</h6><h6 class="text-muted ml-2"><del>$665.00</del></h6>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="detail.html?product=14" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="card product-item border-0 mb-4">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="./img/product-15.jpg" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Opal Muse Dress</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>$223.00</h6><h6 class="text-muted ml-2"><del>$553.00</del></h6>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="detail.html?product=15" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="card product-item border-0 mb-4">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="./img/product-16.jpg" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Clara Lumière</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>$999.00</h6><h6 class="text-muted ml-2"><del>$1500.00</del></h6>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="detail.html?product=16" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-            </div>
+        <div class="row px-xl-5 pb-3" id="product-list">
+            <!-- Các sản phẩm từ API sẽ được thêm vào đây -->
         </div>
     </div>
-    <!-- Products End -->
+    <!-- Product End -->
+
+
+
 
     <!-- Vendor Start -->
     <div class="container-fluid py-5">
@@ -582,7 +237,8 @@
                         <span class="text-primary font-weight-bold border border-white px-3 mr-1">FITMart</span>
                     </h1>
                 </a>
-                <p>Welcome to your one-stop online shopping destination! Discover a wide range of products at unbeatable prices, all from the comfort of your home. Shop smart, shop easy!</p>
+                <p>Welcome to your one-stop online shopping destination! Discover a wide range of products at unbeatable
+                    prices, all from the comfort of your home. Shop smart, shop easy!</p>
 
             </div>
             <div class="col-lg-8 col-md-12">
@@ -590,17 +246,24 @@
                     <div class="col-md-6 mb-5">
                         <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="text-dark mb-2" href="../index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                            <a class="text-dark mb-2" href="./pages/shop.html"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
-                            <a class="text-dark mb-2" href="./pages/cart.html"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
-                            <a class="text-dark mb-2" href="./pages/checkout.html"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
-                            <a class="text-dark" href="./pages/contact.html"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                            <a class="text-dark mb-2" href="../index.html"><i
+                                    class="fa fa-angle-right mr-2"></i>Home</a>
+                            <a class="text-dark mb-2" href="./pages/shop.html"><i class="fa fa-angle-right mr-2"></i>Our
+                                Shop</a>
+                            <a class="text-dark mb-2" href="./pages/cart.html"><i
+                                    class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
+                            <a class="text-dark mb-2" href="./pages/checkout.html"><i
+                                    class="fa fa-angle-right mr-2"></i>Checkout</a>
+                            <a class="text-dark" href="./pages/contact.html"><i
+                                    class="fa fa-angle-right mr-2"></i>Contact Us</a>
                         </div>
                     </div>
                     <div class="col-md-6 mb-5">
                         <h5 class="font-weight-bold text-dark mb-4">Address</h5>
-                        <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Km9 Đ. Nguyễn Trãi, P. Văn Quán, Nam Từ Liêm, Hà Nội</p>
-                        <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i><a href="mailto:info@fitmart.com">info@fitmart.com</a></p>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Km9 Đ. Nguyễn Trãi, P. Văn
+                            Quán, Nam Từ Liêm, Hà Nội</p>
+                        <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i><a
+                                href="mailto:info@fitmart.com">info@fitmart.com</a></p>
                         <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>09347234822</p>
                         <div class="d-flex justify-content-start mt-4">
                             <a class="text-dark px-2" href="#"><i class="fab fa-facebook-f"></i></a>
@@ -631,7 +294,8 @@
     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
     <!-- JavaScript Libraries -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
@@ -642,42 +306,193 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'935393fccc57ad62',t:'MTc0NTQ3NjUwMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Phần check login giữ nguyên
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const username = localStorage.getItem('username') || "User";
+
+            if (isLoggedIn) {
+                document.getElementById('loginLink').classList.add('d-none');
+                document.getElementById('registerLink').classList.add('d-none');
+
+                const userGreeting = document.getElementById('userGreeting');
+                userGreeting.textContent = `Hello, ${username}`;
+                userGreeting.classList.remove('d-none');
+
+                const logoutLink = document.getElementById('logoutLink');
+                logoutLink.classList.remove('d-none');
+
+                logoutLink.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    localStorage.clear();
+                    alert('Đăng xuất thành công!');
+                    window.location.href = './index.html';
+                });
+            }
+
+            // 👉 Bắt đầu load sản phẩm
+            fetch('http://localhost:5000/products')
+                .then(response => response.json())
+                .then(data => {
+                    const productList = document.getElementById('product-list');
+                    productList.innerHTML = '';
+
+                    const currentUserId = localStorage.getItem('userId'); // 👈 lấy userId đang login
+
+                    data.forEach(product => {
+                        const isOwner = product.userId === currentUserId; // 👈 kiểm tra
+
+                        const productHTML = `
+<div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+    <div class="card product-item border-0 mb-4">
+        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+            <img class="img-fluid w-100" src="${product.image || './img/default.jpg'}" alt="${product.name}">
+        </div>
+        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+            <h6 class="text-truncate mb-3">${product.name}</h6>
+            <div class="d-flex justify-content-center">
+                <h6>$${product.price.toFixed(2)}</h6>
+                ${product.originalPrice ? `<h6 class="text-muted ml-2"><del>$${product.originalPrice.toFixed(2)}</del></h6>` : ''}
+            </div>
+        </div>
+            </a>
+            ${isOwner
+                                ? `<a href="./pages/addProduct.html?id=${product._id}" class="btn btn-sm btn-outline-success w-50">
+                     <i class="fas fa-edit mr-1"></i>Edit Product
+                   </a>`
+                                : `<button class="btn btn-sm btn-outline-warning w-50 add-to-cart-btn" data-id="${product._id}">
+                     <i class="fas fa-shopping-cart mr-1"></i>Add To Cart
+                   </button>`
+                            }
+    
+    </div>
+</div>
+`;
+
+                        productList.innerHTML += productHTML;
+                    });
+
+                    // ⭐ Gán sự kiện add-to-cart (nếu không phải sản phẩm của chính mình)
+                    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                        button.addEventListener('click', async function () {
+                            const productId = this.getAttribute('data-id');
+                            const userId = localStorage.getItem('userId');
+
+                            if (!userId) {
+                                alert("Please login first!");
+                                return;
+                            }
+
+                            try {
+                                const res = await fetch('http://localhost:5000/cart', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({
+                                        userId,
+                                        productId,
+                                        quantity: 1
+                                    })
+                                });
+
+                                const data = await res.json();
+                                if (res.ok) {
+                                    alert('Added to cart successfully!');
+                                } else {
+                                    alert(data.message || 'Failed to add to cart');
+                                }
+                            } catch (error) {
+                                console.error('Error adding to cart:', error);
+                            }
+                        });
+                    });
+                })
+
+                .catch(error => {
+                    console.error('Error fetching products:', error);
+                });
+        });
+    </script>
+
+
+    <script>
+        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+            button.addEventListener('click', async function () {
+                const productId = this.getAttribute('data-id');
+                const userId = localStorage.getItem('userId');
+
+                if (!userId) {
+                    alert("Please login first!");
+                    return;
+                }
+
+                try {
+                    const res = await fetch('http://localhost:5000/cart', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            userId,
+                            productId,
+                            quantity: 1
+                        })
+                    });
+
+                    const data = await res.json();
+                    if (res.ok) {
+                        alert('Added to cart successfully!');
+                    } else {
+                        alert(data.message || 'Failed to add to cart');
+                    }
+                } catch (error) {
+                    console.error('Error adding to cart:', error);
+                }
+            });
+        });
+
+
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const username = localStorage.getItem('username') || 'User';
+
+            if (isLoggedIn) {
+                // Ẩn Login + Register
+                const loginLink = document.getElementById('loginLink');
+                const registerLink = document.getElementById('registerLink');
+                if (loginLink) loginLink.style.display = 'none';
+                if (registerLink) registerLink.style.display = 'none';
+
+                // Hiện Hello username
+                const userGreeting = document.getElementById('userGreeting');
+                if (userGreeting) {
+                    userGreeting.textContent = `Hello, ${username}`;
+                    userGreeting.classList.remove('d-none');
+                }
+                // Hiện Logout
+                const logoutLink = document.getElementById('logoutLink');
+                if (logoutLink) {
+                    logoutLink.classList.remove('d-none');
+                    logoutLink.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        // Xóa localStorage
+                        localStorage.removeItem('isLoggedIn');
+                        localStorage.removeItem('username');
+                        localStorage.removeItem('email');
+                        localStorage.removeItem('userId');
+                        // Reload lại trang để load giao diện mới
+                        window.location.href = './index.html';
+                    });
+                }
+            }
+        });
+    </script>
+
+
+</body>
 
 </html>
-
-<script>
-    // Check if user is logged in
-    document.addEventListener('DOMContentLoaded', function() {
-        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-        const username = localStorage.getItem('username');
-        
-        if (isLoggedIn && username) {
-            // Hide login and register links
-            document.getElementById('loginLink').classList.add('d-none');
-            document.getElementById('registerLink').classList.add('d-none');
-            
-            // Show user greeting and logout link
-            const userGreeting = document.getElementById('userGreeting');
-            userGreeting.textContent = `Hello, ${username}`;
-            userGreeting.classList.remove('d-none');
-            
-            const logoutLink = document.getElementById('logoutLink');
-            logoutLink.classList.remove('d-none');
-            
-            // Add logout functionality
-            logoutLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Clear user data from localStorage
-                localStorage.removeItem('userId');
-                localStorage.removeItem('username');
-                localStorage.removeItem('email');
-                localStorage.removeItem('isLoggedIn');
-                
-                // Redirect to home page
-                window.location.href = '../index.html';
-            });
-        }
-    });
-</script>

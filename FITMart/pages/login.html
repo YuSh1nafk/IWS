@@ -5,20 +5,21 @@
     <meta charset="utf-8">
     <title>FITMart - Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
     <!-- Favicon -->
     <link rel="icon" href="../img/favicon.ico">
-  
+
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-  
+
     <!-- Libraries Stylesheet -->
     <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-  
+
     <!-- Stylesheet -->
     <link href="../css/style.css" rel="stylesheet">
 </head>
@@ -29,7 +30,8 @@
         <div class="row align-items-center py-3 px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
                 <a href="../index.html" class="text-decoration-none">
-                    <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">FITMart</span></h1>
+                    <h1 class="m-0 display-5 font-weight-semi-bold"><span
+                            class="text-primary font-weight-bold border px-3 mr-1">FITMart</span></h1>
                 </a>
             </div>
             <div class="col-lg-6 col-6 text-left">
@@ -95,11 +97,12 @@
                         <h4 class="mb-4 text-center font-weight-semi-bold">Login to Your Account</h4>
                         <form id="loginForm">
                             <div class="control-group mb-3">
-                                <input type="email" class="form-control" id="email" placeholder="Email" required/>
+                                <input type="email" class="form-control" id="email" placeholder="Email" required />
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="control-group mb-3">
-                                <input type="password" class="form-control" id="password" placeholder="Password" required/>
+                                <input type="password" class="form-control" id="password" placeholder="Password"
+                                    required />
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="text-center mb-2">
@@ -143,59 +146,52 @@
 
     <!-- Login JavaScript -->
     <script>
-        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+        document.getElementById("loginForm").addEventListener("submit", async (e) => {
             e.preventDefault();
-            
+
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            const alertMessage = document.getElementById('alertMessage');
-            
+
             try {
-                const response = await fetch('http://localhost:5000/auth/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ email, password })
+                const res = await fetch("http://localhost:5000/auth/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, password }),
                 });
-                
-                const data = await response.json();
-                
-                if (response.ok) {
-                    // Save user data to localStorage
-                    localStorage.setItem('userId', data.user.id);
-                    localStorage.setItem('username', data.user.username);
-                    localStorage.setItem('email', data.user.email);
-                    localStorage.setItem('isLoggedIn', 'true');
-                    
-                    alertMessage.textContent = 'Login successful! Redirecting...';
-                    alertMessage.classList.remove('d-none', 'alert-danger');
-                    alertMessage.classList.add('alert-success');
-                    
-                    // Redirect to home page after successful login
-                    setTimeout(() => {
-                        window.location.href = '../index.html';
-                    }, 1500);
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    // Giả sử data trả về có các trường: data.userId, data.username, data.email
+
+                    if (res.ok) {
+                        localStorage.setItem("userId", data.userId);
+                        localStorage.setItem("username", data.username);
+                        localStorage.setItem("email", data.email);
+                        localStorage.setItem("createdAt", data.createdAt); // thêm createdAt
+                        localStorage.setItem("isAdmin",false); // thêm isAdmin nếu cần
+                        localStorage.setItem("isLoggedIn", 'true');
+
+                        alert("Đăng nhập thành công!");
+                        window.location.href = "../index.html"; // Chuyển về home
+                    } else {
+                        alert(data.message || "Đăng nhập thất bại!");
+                    }
+
+                    alert("Đăng nhập thành công!");
+                    window.location.href = "../index.html"; // Chuyển về home
                 } else {
-                    alertMessage.textContent = data.message || 'Login failed';
-                    alertMessage.classList.remove('d-none', 'alert-success');
-                    alertMessage.classList.add('alert-danger');
+                    alert(data.message || "Đăng nhập thất bại!");
                 }
-            } catch (error) {
-                alertMessage.textContent = 'An error occurred. Please try again.';
-                alertMessage.classList.remove('d-none', 'alert-success');
-                alertMessage.classList.add('alert-danger');
-                console.error('Error:', error);
-            }
-        });
-        
-        // Check if user is already logged in
-        document.addEventListener('DOMContentLoaded', function() {
-            if (localStorage.getItem('isLoggedIn') === 'true') {
-                // Redirect to home or dashboard
-                // window.location.href = '../index.html';
+
+            } catch (err) {
+                console.error(err);
+                alert("Đã xảy ra lỗi!");
             }
         });
     </script>
+
+
 </body>
-</html> 
+
+</html>

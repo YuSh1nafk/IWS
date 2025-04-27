@@ -5,29 +5,24 @@
     <meta charset="utf-8">
     <title>FITMart</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
     <!-- Favicon (local file) -->
     <link rel="icon" href="../img/favicon.ico">
-  
+
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link 
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" 
-      rel="stylesheet"
-    >
-  
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
     <!-- Font Awesome -->
-    <link 
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" 
-      rel="stylesheet"
-    >
-  
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
     <!-- Libraries Stylesheet (local file) -->
     <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-  
+
     <!-- Your compiled CSS (local file) -->
     <link href="../css/style.css" rel="stylesheet">
-  </head>
+</head>
 
 <body>
     <!-- Topbar Start -->
@@ -35,8 +30,9 @@
 
         <div class="row align-items-center py-3 px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
-                <a href="" class="text-decoration-none">
-                    <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">FITMart</span></h1>
+                <a href="../index.html" class="text-decoration-none">
+                    <h1 class="m-0 display-5 font-weight-semi-bold"><span
+                            class="text-primary font-weight-bold border px-3 mr-1">FITMart</span></h1>
                 </a>
             </div>
             <div class="col-lg-6 col-6 text-left">
@@ -51,12 +47,6 @@
                     </div>
                 </form>
             </div>
-            <div class="col-lg-3 col-6 text-right">
-                <a href="" class="btn border">
-                    <i class="fas fa-shopping-cart text-primary"></i>
-                    <span class="badge">0</span>
-                </a>
-            </div>
         </div>
     </div>
     <!-- Topbar End -->
@@ -65,30 +55,12 @@
     <!-- Navbar Start -->
     <div class="container-fluid">
         <div class="row border-top px-xl-5">
- 
+
             <div class="col-lg-12">
                 <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
                     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <div class="navbar-nav mr-auto py-0">
-                            <a href="../index.html" class="nav-item nav-link">Home</a>
-                            <a href="shop.html" class="nav-item nav-link">Shop</a>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Pages</a>
-                                <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="cart.html" class="dropdown-item">Shopping Cart</a>
-                                    <a href="checkout.html" class="dropdown-item">Checkout</a>
-                                </div>
-                            </div>
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
-                        </div>
-                        <div class="navbar-nav ml-auto py-0">
-                            <a href="" class="nav-item nav-link">Login</a>
-                            <a href="" class="nav-item nav-link">Register</a>
-                        </div>
-                    </div>
                 </nav>
             </div>
         </div>
@@ -108,354 +80,205 @@
     <!-- Page Header End -->
 
 
-    <!-- Cart Start -->
     <div class="container-fluid pt-5">
         <div class="row px-xl-5">
+            <!-- Danh sách sản phẩm bên trái -->
             <div class="col-lg-8 table-responsive mb-5">
                 <table class="table table-bordered text-center mb-0">
                     <thead class="bg-secondary text-dark">
                         <tr>
-                            <th>Products</th>
+                            <th>Product</th>
                             <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
                             <th>Remove</th>
                         </tr>
                     </thead>
                     <tbody id="cart-items" class="align-middle">
-                        <!-- Cart items will be loaded here dynamically -->
+                        <!-- Các sản phẩm sẽ render vào đây bằng JS -->
                     </tbody>
                 </table>
             </div>
-            <div class="col-lg-4">
-                <div class="card border-secondary mb-5">
+
+            <!-- Cart Summary + Checkout bên phải -->
+            <div class="col-lg-4 d-flex flex-column align-items-end">
+                <div class="card border-secondary mb-5" style="width: 100%;">
                     <div class="card-header bg-secondary border-0">
-                        <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
                     </div>
                     <div class="card-body">
-                        <div class="d-flex justify-content-between mb-3 pt-1">
-                            <h6 class="font-weight-medium">Subtotal</h6>
-                            <h6 id="cart-subtotal" class="font-weight-medium">$0.00</h6>
+
+                        <div class="card-footer border-secondary bg-transparent">
+                            <button id="checkout-button" class="btn btn-block btn-primary my-3 py-3">
+                                Proceed To Checkout
+                            </button>
                         </div>
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-medium">Shipping</h6>
-                            <h6 class="font-weight-medium">$10.00</h6>
-                        </div>
-                    </div>
-                    <div class="card-footer border-secondary bg-transparent">
-                        <div class="d-flex justify-content-between mt-2">
-                            <h5 class="font-weight-bold">Total</h5>
-                            <h5 id="cart-total" class="font-weight-bold">$10.00</h5>
-                        </div>
-                        <button class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button>
+
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- Cart End -->
 
 
-     <!-- Footer Start -->
-     <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
-        <div class="row px-xl-5 pt-5">
-            <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
-                <a href="" class="text-decoration-none">
-                    <h1 class="mb-4 display-5 font-weight-semi-bold">
-                        <span class="text-primary font-weight-bold border border-white px-3 mr-1">FITMart</span>
-                    </h1>
-                </a>
-                <p>Welcome to your one-stop online shopping destination! Discover a wide range of products at unbeatable prices, all from the comfort of your home. Shop smart, shop easy!</p>
 
-            </div>
-            <div class="col-lg-8 col-md-12">
-                <div class="row">
-                    <div class="col-md-6 mb-5">
-                        <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
-                        <div class="d-flex flex-column justify-content-start">
-                            <a class="text-dark mb-2" href="../index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                            <a class="text-dark mb-2" href="./pages/shop.html"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
-                            <a class="text-dark mb-2" href="./pages/cart.html"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
-                            <a class="text-dark mb-2" href="./pages/checkout.html"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
-                            <a class="text-dark" href="./pages/contact.html"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
-                        </div>
+            <!-- Footer Start -->
+            <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
+                <div class="row px-xl-5 pt-5">
+                    <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+                        <a href="" class="text-decoration-none">
+                            <h1 class="mb-4 display-5 font-weight-semi-bold">
+                                <span class="text-primary font-weight-bold border border-white px-3 mr-1">FITMart</span>
+                            </h1>
+                        </a>
+                        <p>Welcome to your one-stop online shopping destination! Discover a wide range of products at
+                            unbeatable
+                            prices, all from the comfort of your home. Shop smart, shop easy!</p>
+
                     </div>
-                    <div class="col-md-6 mb-5">
-                        <h5 class="font-weight-bold text-dark mb-4">Address</h5>
-                        <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Km9 Đ. Nguyễn Trãi, P. Văn Quán, Nam Từ Liêm, Hà Nội</p>
-                        <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i><a href="mailto:info@fitmart.com">info@fitmart.com</a></p>
-                        <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>09347234822</p>
-                        <div class="d-flex justify-content-start mt-4">
-                            <a class="text-dark px-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="text-dark px-2" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="text-dark px-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="text-dark px-2" href="#"><i class="fab fa-instagram"></i></a>
-                            <a class="text-dark px-2" href="#"><i class="fab fa-youtube"></i></a>
+                    <div class="col-lg-8 col-md-12">
+
+                        <div class="col-md-6 mb-5">
+                            <h5 class="font-weight-bold text-dark mb-4">Address</h5>
+                            <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Km9 Đ. Nguyễn Trãi, P.
+                                Văn
+                                Quán, Nam Từ Liêm, Hà Nội</p>
+                            <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i><a
+                                    href="mailto:info@fitmart.com">info@fitmart.com</a></p>
+                            <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>09347234822</p>
+                            <div class="d-flex justify-content-start mt-4">
+                                <a class="text-dark px-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a class="text-dark px-2" href="#"><i class="fab fa-twitter"></i></a>
+                                <a class="text-dark px-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <a class="text-dark px-2" href="#"><i class="fab fa-instagram"></i></a>
+                                <a class="text-dark px-2" href="#"><i class="fab fa-youtube"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row border-top border-light mx-xl-5 py-4">
-            <div class="col-md-6 px-xl-0">
-                <p class="mb-md-0 text-center text-md-left text-dark">
-                    © <a class="text-dark font-weight-semi-bold" href="#">FITMart</a>. All Rights Reserved. Designed
-                    by <a class="text-dark font-weight-semi-bold" href="https://htmlcodex.com">Vuong</a>
-                </p>
+            <div class="row border-top border-light mx-xl-5 py-4">
+                <div class="col-md-6 px-xl-0">
+                    <p class="mb-md-0 text-center text-md-left text-dark">
+                        © <a class="text-dark font-weight-semi-bold" href="#">FITMart</a>. All Rights Reserved. Designed
+                        by <a class="text-dark font-weight-semi-bold" href="https://htmlcodex.com">Vuong</a>
+                    </p>
+                </div>
+                <div class="col-md-6 px-xl-0 text-center text-md-right">
+                    <img class="img-fluid" src="../img/payments.png" alt="Payment Methods">
+                </div>
             </div>
-            <div class="col-md-6 px-xl-0 text-center text-md-right">
-                <img class="img-fluid" src="../img/payments.png" alt="Payment Methods">
-            </div>
         </div>
-    </div>
-    <!-- Footer End -->
+        <!-- Footer End -->
 
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="../lib/easing/easing.min.js"></script>
-    <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="../lib/easing/easing.min.js"></script>
+        <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
 
-    <!-- Contact Javascript File -->
-    <script src="../mail/jqBootstrapValidation.min.js"></script>
-    <script src="../mail/contact.js"></script>
+        <!-- Contact Javascript File -->
+        <script src="../mail/jqBootstrapValidation.min.js"></script>
+        <script src="../mail/contact.js"></script>
 
-    <!-- Template Javascript -->
-    <script src="../js/main.js"></script>
-    
-    <!-- Cart Functionality -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // For demo purposes, using a fixed userId (this would come from authentication in a real app)
-            const userId = localStorage.getItem('userId');
-            
-            // Load cart data when page loads
-            loadCart(userId);
-            
-            // Function to load cart data
-            function loadCart(userId) {
-                fetch(`http://localhost:5000/cart/${userId}`)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Failed to fetch cart');
-                        }
-                        return response.json();
-                    })
-                    .then(cart => {
-                        if (!cart || !cart.items || cart.items.length === 0) {
-                            displayEmptyCart();
+        <!-- Template Javascript -->
+        <script src="../js/main.js"></script>
+
+
+
+        <!-- Cart Functionality -->
+
+
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const urlParams = new URLSearchParams(window.location.search);
+                let userId = urlParams.get('userId');
+
+                if (!userId) {
+                    // Nếu không có userId trên URL thì lấy từ localStorage
+                    userId = localStorage.getItem('userId');
+                }
+
+                if (!userId) {
+                    alert("Please login first!");
+                    window.location.href = '../login.html';
+                    return;
+                }
+
+                async function loadCart() {
+                    try {
+                        const res = await fetch(`http://localhost:5000/cart/${userId}`);
+                        const data = await res.json();
+
+                        if (!res.ok) {
+                            alert(data.message || "Failed to load cart");
                             return;
                         }
-                        
-                        displayCart(cart);
-                        updateCartCount(userId);
-                    })
-                    .catch(error => {
-                        console.error('Error fetching cart:', error);
-                        displayEmptyCart();
-                    });
-            }
-            
-            // Function to display empty cart message
-            function displayEmptyCart() {
-                const cartContainer = document.getElementById('cart-items');
-                cartContainer.innerHTML = `
-                    <tr>
-                        <td colspan="5" class="text-center py-5">
-                            <h4>Your cart is empty</h4>
-                            <p>Looks like you haven't added any products to your cart yet.</p>
-                            <a href="shop.html" class="btn btn-primary mt-3">Continue Shopping</a>
-                        </td>
-                    </tr>
-                `;
-                
-                // Update summary
-                document.getElementById('cart-subtotal').textContent = '$0.00';
-                document.getElementById('cart-total').textContent = '$10.00';
-            }
-            
-            // Function to display cart items
-            function displayCart(cart) {
-                const cartContainer = document.getElementById('cart-items');
-                cartContainer.innerHTML = '';
-                
-                let subtotal = 0;
-                
-                // Process each item in the cart
-                cart.items.forEach(item => {
-                    const product = item.productId;
-                    if (!product) return; // Skip if product data is missing
-                    
-                    const itemTotal = product.price * item.quantity;
-                    subtotal += itemTotal;
-                    
-                    cartContainer.innerHTML += `
-                        <tr>
-                            <td class="align-middle">
-                                <img src="${product.image || '../img/placeholder.jpg'}" alt="${product.name}" style="width: 50px;">
-                                ${product.name}
-                            </td>
-                            <td class="align-middle">$${product.price.toFixed(2)}</td>
-                            <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus" data-product-id="${product._id}">
-                                            <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary text-center" value="${item.quantity}">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus" data-product-id="${product._id}">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="align-middle">$${itemTotal.toFixed(2)}</td>
-                            <td class="align-middle">
-                                <button class="btn btn-sm btn-primary remove-item" data-product-id="${product._id}">
-                                    <i class="fa fa-times"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    `;
-                });
-                
-                // Add event listeners after adding items to DOM
-                addCartEventListeners(userId);
-                
-                // Update summary
-                const shipping = 10.00;
-                const total = subtotal + shipping;
-                
-                document.getElementById('cart-subtotal').textContent = `$${subtotal.toFixed(2)}`;
-                document.getElementById('cart-total').textContent = `$${total.toFixed(2)}`;
-            }
-            
-            // Function to add event listeners to cart buttons
-            function addCartEventListeners(userId) {
-                // Add listeners for remove buttons
-                document.querySelectorAll('.remove-item').forEach(button => {
-                    button.addEventListener('click', function() {
-                        const productId = this.getAttribute('data-product-id');
-                        removeFromCart(userId, productId);
-                    });
-                });
-                
-                // Add listeners for quantity buttons
-                document.querySelectorAll('.btn-minus').forEach(button => {
-                    button.addEventListener('click', function() {
-                        const productId = this.getAttribute('data-product-id');
-                        const input = this.closest('.quantity').querySelector('input');
-                        let value = parseInt(input.value);
-                        
-                        if (value > 1) {
-                            value--;
-                            input.value = value;
-                            // Update the UI without API call
-                            updateCartUI(this, value);
-                        } else {
-                            // If quantity would be 0, remove item
-                            removeFromCart(userId, productId);
-                        }
-                    });
-                });
-                
-                document.querySelectorAll('.btn-plus').forEach(button => {
-                    button.addEventListener('click', function() {
-                        const productId = this.getAttribute('data-product-id');
-                        const input = this.closest('.quantity').querySelector('input');
-                        let value = parseInt(input.value);
-                        
-                        value++;
-                        input.value = value;
-                        // Update the UI without API call
-                        updateCartUI(this, value);
-                    });
-                });
-            }
-            
-            // Function to update the UI when quantity changes
-            function updateCartUI(button, newQuantity) {
-                const row = button.closest('tr');
-                const priceText = row.querySelector('td:nth-child(2)').textContent;
-                const price = parseFloat(priceText.replace('$', ''));
-                const newTotal = price * newQuantity;
-                
-                // Update the total for this item
-                row.querySelector('td:nth-child(4)').textContent = '$' + newTotal.toFixed(2);
-                
-                // Recalculate subtotal and total
-                updateCartSummary();
-            }
-            
-            // Function to update the cart summary (subtotal and total)
-            function updateCartSummary() {
-                let subtotal = 0;
-                
-                // Calculate subtotal from all rows
-                document.querySelectorAll('#cart-items tr').forEach(row => {
-                    const totalText = row.querySelector('td:nth-child(4)').textContent;
-                    if (totalText) {
-                        subtotal += parseFloat(totalText.replace('$', ''));
-                    }
-                });
-                
-                const shipping = 10.00;
-                const total = subtotal + shipping;
-                
-                // Update the summary values
-                document.getElementById('cart-subtotal').textContent = '$' + subtotal.toFixed(2);
-                document.getElementById('cart-total').textContent = '$' + total.toFixed(2);
-            }
-            
-            // Function to remove item from cart
-            function removeFromCart(userId, productId) {
-                fetch(`http://localhost:5000/cart/${userId}/${productId}`, {
-                    method: 'DELETE'
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Failed to remove item from cart');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    // Reload cart to show updated state
-                    loadCart(userId);
-                })
-                .catch(error => {
-                    console.error('Error removing item from cart:', error);
-                    alert('Failed to remove item. Please try again.');
-                });
-            }
-            
-            // Function to update cart count in header
-            function updateCartCount(userId) {
-                fetch(`http://localhost:5000/cart/${userId}`)
-                    .then(response => response.json())
-                    .then(cart => {
-                        let itemCount = 0;
-                        if (cart && cart.items) {
-                            itemCount = cart.items.reduce((total, item) => total + item.quantity, 0);
-                        }
-                        // Update all cart badges
-                        document.querySelectorAll('.fa-shopping-cart').forEach(icon => {
-                            const badge = icon.nextElementSibling;
-                            if (badge && badge.classList.contains('badge')) {
-                                badge.textContent = itemCount;
-                            }
+
+                        const cartItems = data.items || [];
+                        const cartContainer = document.getElementById('cart-items');
+                        cartContainer.innerHTML = '';
+
+                        cartItems.forEach(item => {
+                            const product = item.productId;
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+    <td class="align-middle">${product.name}</td>
+    <td class="align-middle">$${product.price.toFixed(2)}</td>
+    <td class="align-middle">
+      <button class="btn btn-sm btn-danger remove-from-cart" data-id="${product._id}">
+        Remove
+      </button>
+    </td>
+  `;
+                            cartContainer.appendChild(row);
                         });
-                    })
-                    .catch(error => console.error('Error updating cart count:', error));
-            }
-        });
-    </script>
+                        // Sau khi render xong, gán event Remove cho các nút
+                        document.querySelectorAll('.remove-from-cart').forEach(button => {
+                            button.addEventListener('click', async function () {
+                                const productId = this.getAttribute('data-id');
+                                if (confirm('Are you sure you want to remove this item?')) {
+                                    await removeFromCart(productId);
+                                }
+                            });
+                        });
+
+                    } catch (error) {
+                        console.error('Error loading cart:', error);
+                    }
+                }
+
+                loadCart();
+                async function removeFromCart(productId) {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    let userId = urlParams.get('userId');
+
+                    if (!userId) {
+                        userId = localStorage.getItem('userId');
+                    }
+
+                    try {
+                        const res = await fetch(`http://localhost:5000/cart/${userId}/items/${productId}`, {
+                            method: 'DELETE'
+                        });
+
+                        const data = await res.json();
+
+                        if (res.ok) {
+                            alert('Removed from cart successfully!');
+                            loadCart(); // Reload lại giỏ hàng
+                        } else {
+                            alert(data.message || "Failed to remove item");
+                        }
+                    } catch (error) {
+                        console.error('Error removing item:', error);
+                    }
+                }
+
+            });
+
+        </script>
 </body>
 
 </html>
